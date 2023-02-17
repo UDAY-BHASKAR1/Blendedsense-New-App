@@ -1,0 +1,216 @@
+<div>
+    <div *ngIf="Loader === true" class="loaderImageDiv" style="display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: white;
+    height: 100vh;
+    "
+    >
+        <img class="loaderImage" style="width: 100px;
+         " src="https://stage.blendedsense.com/img/bs_logo.774cd192.gif" alt="noImage" >
+    </div>
+    <div class="flex-auto bg-white" style="padding-left: 50px;" *ngIf="Loader === false">
+        <div class="surface-border border-round  flex-auto">
+            <p class="h1 Dashboard">Dashboard</p><br>
+            <p class="h1 subjects">Welcome,Subjects</p>
+            <p class="your-vision">Your vision is being brought to life. Hang tight, your <br> matched Creative Team
+                is currently hard at work producing <br> assets we know you’ll love.</p>
+        </div>
+        <div class="d-flex col first-items">
+            <div class="start col-7">
+                <div class=" border-bottom-1 surface-border">
+                    <span class="quick1">Quick Start Tasks</span>
+                </div>
+    
+                <img class="person" src="https://stage.blendedsense.com/img/noTask.796b0ac8.svg" alt="">
+                <div class="italic text-center"><i>No new tasks... check back <br>
+                        later for an update!</i></div>
+            </div>
+            
+    
+            <div class="col-5" >
+    
+                <div class="border-bottom-1 surface-border"><span class="quick2">Upcoming Events</span></div>
+                <div class="ex3" *ngIf="data;else bell">
+                    <div *ngFor="let post of data">
+                        <div>
+                            <p class="event-date">{{post['date'] | date:'MMM-dd'}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <img class="event-logo"
+                                src="https://stage.blendedsense.com/img/camera_event.15700633.svg" alt="">
+                            <p class="ms-3 event-name">{{post.name}}</p>
+                        </div>
+                        <div>
+                            <p class="ms-5 event-time">{{post.startTime}}-{{post.endTime}}</p>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #bell>
+                    <img src="https://stage.blendedsense.com/img/no-events.bb4cc31f.svg" alt="">
+                    <p><i>No reminders yet... check back
+                        later for an update!</i></p>
+                </ng-template>
+            </div>
+        </div>
+        <div class="d-flex col first-items">
+            <div class="start col-7 ">
+                <div class="border-bottom-1 surface-border">
+                    <span class="quick3">Frequently Asked Questions</span>
+                </div>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <p class="accordion-1  accordion-button collapsed " type="button"
+                                data-bs-toggle="collapse"data-bs-target="#flush-collapseOne">
+                                When Will I see my Assets?
+                            </p>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample"
+                            aria-controls="flush-collapseTwo">
+                            <div class="accordion-body accordion-1-body">One week after the Sweep, you will receive
+                                a post production checkpoint where you can deliver any feedback. A week later you
+                                will receive your final assets delivered in the Blended Sense platform!</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <p class="accordion-2 accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                aria-controls="flush-collapseTwo">
+                                What is a post-production checkpoint?
+                            </p>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body accordion-2-body">This is a first look at your assets, and
+                                time to give feedback in order to get the final results you want. You will have 2-3
+                                business days to send over any revisions so we can deliver your finished assets on
+                                time.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <p class="accordion-3 accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                aria-expanded="false" aria-controls="flush-collapseThree">
+                                When will I receive my final product / assets?
+                            </p>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body accordion-3-body">2 weeks post Sweep.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="col-5">
+    
+                <div class="border-bottom-1 surface-border"><span class="quick4">Your Team</span></div>
+                <div *ngIf="data1">
+                    <div>
+                        <p class="content">Content producer</p>
+                    </div>
+                    <div class="d-flex">
+                        <div><img class="content-producer"
+                                [src]="data1?.project?.business?.pointOfContact?.profilePic ||'https://th.bing.com/th/id/R.945f33b643f2ceffcdae90fb57c61854?rik=ZbauAhRVa2agEw&riu=http%3a%2f%2fgetdrawings.com%2ffree-icon-bw%2fgeneric-avatar-icon-3.png&ehk=MEKRKETvvufVVLoShHum%2baEfkHOctyKClaf6qCu3Msg%3d&risl=&pid=ImgRaw&r=0'">
+                        </div>
+                        <div class="producer">
+                            <p class="fl-name">{{data1?.project?.business?.pointOfContact?.firstName}}
+                                {{data1?.project?.business?.pointOfContact?.lastName}}</p>
+                            <a class="cp-mail1" href="mailto:renucp@yopmail.com">
+                                <p class="cp-mail">{{data1?.project?.business?.pointOfContact?.email}}</p>
+                            </a>
+    
+                            <p class="S-meeting">Schedule a meeting</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="creatives">Creatives</p>
+                    </div>
+                    <div class="d-flex">
+    
+                        <div><img class="content-producer"
+                                [src]="data1?.users?.executiveTeam?.shift()?.user?.profilePic ||'https://th.bing.com/th/id/R.945f33b643f2ceffcdae90fb57c61854?rik=ZbauAhRVa2agEw&riu=http%3a%2f%2fgetdrawings.com%2ffree-icon-bw%2fgeneric-avatar-icon-3.png&ehk=MEKRKETvvufVVLoShHum%2baEfkHOctyKClaf6qCu3Msg%3d&risl=&pid=ImgRaw&r=0'">
+                        </div>
+                        <!-- <div ><img class="content-producer1" [src]=data1?.users?.executiveTeam.shift().user.profilePic alt=""></div> -->
+                        <p-avatar class="content-ET" label="ET" shape="circle" styleClass="mr-2"
+                            size="xlarge"></p-avatar>
+                        <p-avatar class="content-ETC" label="BB" shape="circle" styleClass="mr-2"
+                            size="xlarge"></p-avatar>
+    
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="d-flex col first-items">
+            <div class="start col-7">
+                <div class=" border-bottom-1 surface-border">
+                    <span class="quick5">Resources</span>
+                </div>
+                <div class="row first-items">
+                    <div class="d-flex col-sm-6 ">
+                        <div>
+                            <img class="mr-4" src="https://stage.blendedsense.com/img/support.89c5382c.svg" alt="">
+                        </div>
+                        <div>
+                            <p class="tech">Technical Support</p>
+                            <p class="tech-question">Have questions? Reach out to <br> your producer directly.</p>
+                            <a class="link  border-bottom-2  border-teal-200  text-decoration-none"
+                                href="mailto:support@blendedsense.com">Contact Support</a>
+                        </div>
+                    </div>
+    
+                    <div class="d-flex col-sm-6 ">
+                        <div><img class="mr-4" src="https://stage.blendedsense.com/img/tutorial.d0696e5b.svg"
+                                alt=""></div>
+                        <div>
+                            <p class="tech">Video & Tutorials</p>
+                            <p class="tech-question">Check out our YouTube <br>channel for tips and tricks</p>
+                            <a href="http://youtube.com/channel/UCqrj6OYDNzdjTZ71XBrNh0Q/featured"
+                                class="link border-bottom-2  border-teal-200  text-decoration-none">Visit YouTube
+                                channel</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row first-items">
+                    <div class="d-flex col-sm-6">
+                        <div><img class="mr-4" src="https://stage.blendedsense.com/img/resourceCenter.02b356fc.svg"
+                                alt=""></div>
+    
+                        <div>
+                            <p class="tech2">Visit Resource Center</p>
+                            <p class="tech-question2">Check out our resources for <br> more on all things creative.
+                            </p>
+                            <a href="https://www.blendedsense.com/blog"
+                                class="link border-bottom-2  border-teal-200  text-decoration-none">Visit Blog</a>
+                        </div>
+                    </div>
+    
+                    <div class="d-flex col-sm-6">
+                        <div><img class="mr-4" src="https://stage.blendedsense.com/img/feedback.8c2036c0.svg"
+                                alt=""></div>
+                        <div>
+                            <p class="tech2">Send Us Feedback</p>
+                            <p class="tech-question2">Let us know how we’re doing. <br> Your feedback is important
+                                to us.</p>
+                            <a href="https://www.blendedsense.com/contact"
+                                class="link border-bottom-2 border-teal-200 text-decoration-none">Send Feedback</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="col-5">
+    
+            </div>
+        </div>
+    </div>
+    

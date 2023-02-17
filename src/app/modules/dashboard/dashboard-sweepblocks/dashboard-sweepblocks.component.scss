@@ -1,0 +1,277 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.sweepBlock{
+    font-size: 48px;
+    padding-top: 35px;
+    color: #343838;
+    font-weight: 500;
+    line-height: 58px;
+    letter-spacing: -2px;
+}
+.items{
+    padding-top: 20px;
+    padding-left: 10px;
+    /* margin-right: 30px; */
+}
+
+.sweep{
+    font-size: 15px;
+    padding-left: 10px;
+}
+.sweeep{
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.inputs{
+    
+    margin-top: 35px;
+    
+}
+
+.field{
+    width: 20rem;
+    position: relative;
+}
+
+.search-icon{
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+}
+
+::ng-deep{
+    .p-column-filter-menu-button, .p-column-filter-clear-button {
+        display: none !important;
+    }
+   
+    .dialouge .button{
+        margin-top: 0px!important;
+      }
+
+      .p-datatable .p-datatable-header {
+        background: none !important; 
+        color: #495057;
+        border: 1px solid #e9ecef;
+        border-width: 1px 0 1px 0;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        padding-top: 30px  !important;
+        padding-bottom: 20px !important;
+        font-weight: 600;
+    }
+
+    .p-datatable-scrollable>.p-datatable-wrapper {
+        position: relative;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-color: #D8D8D8;
+        
+    }
+
+    .p-datatable .p-paginator-bottom {
+        /* border-width: 0 0 1px 0; */
+        border-right: 1px solid;
+        border-color: #D8D8D8;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        
+        
+    }
+    
+    .p-dialog .p-dialog-header {
+        padding: 0rem 0rem 0rem 1.5rem !important;
+    }
+
+    .p-overlaypanel:after {
+        border: none !important;
+    }
+    
+    .p-paginator .p-paginator-first {
+        width:5px;
+    }
+    
+    .p-paginator .p-paginator-prev{
+       width:5px;
+    }
+    .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+        background: white;
+        border-color: white;
+        width:5px;
+    }
+     .p-paginator .p-paginator-next {
+        width:5px;
+    }
+     .p-paginator .p-paginator-last {
+        width:5px;
+    }
+     .p-paginator {
+        margin-left: 30rem !important;
+    }
+} 
+
+
+.card{
+    border-bottom: 1px solid;
+    border-color: #D8D8D8;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+  .dialouge   ::ng-deep  .button {
+      width: 300px !important;
+  }
+ 
+  .dialouge .button {
+    width: 200px !important;
+    background-color: #8066FF; 
+    height: 45px;
+    width: 15rem;
+    border: none;
+    border-radius: 40px;
+    color: #ffffff ;
+} 
+:host ::ng-deep .p-menubar {
+    border: none;
+    width: 90px;
+    height: 40px;
+}
+
+.cancel-btn{
+   border: none;
+   border-radius: 20px;
+}
+
+.delete-btn{
+   border: none;
+   border-radius: 20px;
+   background-color: #FF371B;
+}
+
+.cancell{
+    border: none;
+    border-radius: 20px;
+    height: 42px;
+
+}
+.save{
+    border: none;
+    border-radius: 20px;
+    background-color: #8066FF;
+    height: 42px;
+}
+
+.equip{
+    color: #8066ff;
+    padding: 0px;
+    margin-top: 10px;
+    border: none;
+    width: 10rem;
+    height: 40px;
+    background-color: white;
+}
+.equip:hover{
+    background-color: aliceblue;
+}
+
+
+
+   #cars{
+    margin-top: 10px; 
+   }
+   
+   #cars option{
+    width:200px;   
+   }  
+//    .drop1{
+//     margin-right: 5rem;
+//    }
+   .btn{
+    height: 45px;
+    width: 15rem;
+   }
+
+   .toggle{
+       border: none;
+       width: 40px;
+       background-color:white;
+   }
+  
+
+    .pad{
+        margin-top: 10px;
+
+    }
+    .pad1{
+        margin-top: 10px;
+    
+    }
+   .equipment{
+         margin-bottom: 0px;
+   }
+   .quantity{
+          margin-bottom: 0px;
+   }
+
+    .cars3{
+       width: 40%;
+       height:40px;
+    }
+    // .carstot{
+    //     margin-top: 30px;
+    // }
+   .edit-btn{
+      border: none;
+      width: 100%;
+      background-color: white;
+   }
+   .edit-btn:hover{
+    background-color: aliceblue;
+   }
+  
+   .Delete-btn:hover{
+    background-color: aliceblue;
+   }
+   .btn-div{
+    margin-top: -20px;
+   }
+   .Delete-btn{
+     border: none;
+     background-color: white;
+     color:#FF371B;
+   }
+
+
+@media screen and (max-width: 500px) {
+    ::ng-deep .p-paginator {
+       margin-left: 5rem !important;
+    }
+  }
+@media screen and (max-width: 800px) {
+    ::ng-deep .p-paginator {
+       margin-left: 5rem !important;
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    ::ng-deep .p-paginator {
+       margin-left: 10rem !important;
+    }
+  }
+
+.dropshot{
+    width: 50%;
+}
+
+.drop1{
+   width: 60%;
+}
+.drop2{
+width: 30%;
+}

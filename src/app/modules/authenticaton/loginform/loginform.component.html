@@ -1,0 +1,101 @@
+
+<div>
+    <div class="d-flex">
+      <img
+        class="img1"
+        src="https://stage.blendedsense.com/img/producer.a65db3cf.svg"
+        alt=""
+      />
+      <img
+        class="img2"
+        src="https://stage.blendedsense.com/img/businessOwner.bedd058c.svg"
+        alt=""
+      />
+  
+      <form action=""  class="rounded align-content-center">
+        <div class="loginform">
+          <div class="text-align">
+            <img
+              class="bs-logo"
+              src="https://stage.blendedsense.com/img/logo-colored.55621aa1.svg"
+              alt=""
+            />
+          </div>
+          <div class="text-align">
+            <p class="login">LOGIN</p>
+          </div>
+          <div class="google-continue text-align">
+            <a href="" class="anchor">
+              <div class="d-flex justify-content-center">
+                <img
+                  class="google-logo pb-2"
+                  src="https://stage.blendedsense.com/img/google.19b04ead.svg"
+                  alt=""
+                />
+                <p class="continue-google pt-2 ps-3">Continue with Google</p>
+              </div>
+            </a>
+          </div>
+          <div class="or text-align">
+            <span>or</span>
+          </div>
+          <div class="email-padding text-align">
+            
+            <app-input  [type]="'email'"
+            [formGroup]="login"
+            [formControlName]="'email'"
+            [placeholder]="'Email Address'"
+            [error]="
+              inputRequiredValidation(login, 'email')
+                ? 'Please provide your email address'
+                :  inputPatternValidation(login, 'email')
+                ?'Please provide a valid email address'
+                :errorlist['']
+            "></app-input>
+            <app-input  [type]="changetype?'password':'text'"
+            [formControlName]="'password'"
+            [formGroup]="login"
+            [placeholder]="'password'"
+            [minlength]="'8'"
+            [maxlength]="'20'"
+            [error]="
+              inputRequiredValidation(login, 'password')
+                ? 'Please provide your password'
+                :errorlist['']
+            "
+            >
+            </app-input>
+            <span class="eye-icon" (click)="viewpass()"><i [ngClass]="visible?'pi pi-eye-slash':'pi pi-eye'"></i></span>
+            
+  
+            <div class="text-align">
+              <app-button class="bttn" text="Login" 
+              (btnClick)="onSubmit()" 
+              type="submit"
+              [isDisabled]="!login.valid">
+              </app-button>
+            </div>
+            <div class="text-align">
+              <p class="forgot-password">Forgot Password?</p>
+            </div>
+            <div class="need-an-account text-align">
+              <p>Need an account?<span class="sign-up"> Sign Up</span></p>
+            </div>
+          </div>
+        </div>
+      </form>
+      <img
+        class="img3"
+        src="https://stage.blendedsense.com/img/creative.cbaacd69.svg"
+        alt=""
+      />
+  
+      <img
+        class="img4"
+        src="https://stage.blendedsense.com/img/photoshootEquipment.c4da40ca.svg"
+        alt=""
+      />
+    </div>
+    <hr class="horizontal"/>
+  </div>
+  
