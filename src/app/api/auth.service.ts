@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +13,11 @@ export class AuthService {
   
   
 
-  constructor(private http: HttpClient,private router:Router) { }
+  constructor(private http: HttpClient) { }
 
   getUser(user: any) {
-    
     let url = 'https://stage.blendedsense.com/api/login';
-    console.log(user,"user");
-    
-    return this.http.post(url, user);
+      return this.http.post(url, user);
   }
 
 

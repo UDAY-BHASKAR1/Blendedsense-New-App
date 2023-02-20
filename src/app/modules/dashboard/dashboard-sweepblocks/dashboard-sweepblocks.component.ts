@@ -234,7 +234,7 @@ getSweeps() {
       this.Shot?.data.forEach(ele =>{
         this.getequipmentData.push(ele)
       });
-      console.log(this.getequipmentData,"shotsettingsData");
+      console.log(this.getequipmentData,"equipment-data");
       
        })
    
@@ -246,7 +246,7 @@ getSweeps() {
           this.getshotSettingsData.push(element)
           
         });
-        console.log(this.getshotSettingsData,"equipmentData");
+        console.log(this.getshotSettingsData,"shot-settings-data");
       })
 
       

@@ -55,16 +55,17 @@ export class DashboardComponent {
     localStorage.clear();
     this.router.navigate(['/login']);
    }
+  
    toggle() {
     this.overlayVisible = !this.overlayVisible;
-}
+  }
 
-changeSideBarScreenWidthStatus:boolean=false;
-minimizeSideBarStatus(minimizeSideBar:boolean)
-{
-    //  console.log(minimizeSideBar);
+// changeSideBarScreenWidthStatus:boolean=false;
+// minimizeSideBarStatus(minimizeSideBar:boolean)
+// {
+//     //  console.log(minimizeSideBar);
       
-    this.changeSideBarScreenWidthStatus = minimizeSideBar;
+//     this.changeSideBarScreenWidthStatus = minimizeSideBar;
     
-} 
+// } 
 }

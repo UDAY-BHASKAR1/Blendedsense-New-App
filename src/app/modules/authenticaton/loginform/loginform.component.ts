@@ -67,20 +67,20 @@ export class LoginformComponent {
   }
 
   onSubmit(): void {
-    console.log(this.login.value);
+    console.log("this.login.value");
 
     this.postData.getUser(this.login.value).subscribe(
       (res) => {
         this.dataItem = res;
-        console.log(this.dataItem);
+        console.log(this.dataItem,"ijnui");
         localStorage.setItem('token', this.dataItem.token);
-        this.toastr.success('login succesfull', null);
-        // this.timer = setTimeout(() => {
-        //   this.router.navigate(['/Dashboard']);
-        // });
+        this.toastr.success('login succesfull', null,{ timeOut: 1000 });
+        this.timer = setTimeout(() => {
+          this.router.navigate(['/Dashboard']);
+        },1000);
       },
       (err) => {
-        this.toastr.error('Invalid User Details', null, { timeOut: 1000 });
+        this.toastr.error('Invalid User Details', null,{ timeOut: 1000 });
       }
     );
   }
@@ -107,8 +107,7 @@ export class LoginformComponent {
   }
 
 
-  hello(){
-    console.log('hello');
-    
-  }
+  // hello(){
+  //   console.log('hello');
+  // }
 }
