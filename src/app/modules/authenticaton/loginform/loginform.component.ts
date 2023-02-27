@@ -23,16 +23,10 @@ export class LoginformComponent {
   faEye=faEye;
   visible: boolean = true;
   changetype: boolean = true;
-
   login: FormGroup;
-
-  errorlist: any = '';
-
-  title = 'toaster-not';
-  loginUserData: any = {};
-  dataItem: any = {};
+  errorlist: string = '';
   timer: any;
-  timeOut: number;
+  
   constructor(
     private postData: AuthService,
     private toastr:ToastrService,
@@ -47,19 +41,14 @@ export class LoginformComponent {
   }
 
   ngOnInit() {
-    // if there is token in localstorage navigate to dashboard
-    // if (!!localStorage.getItem('token') == null) {
-    //    return this.router.navigate(['/login']);
-    // } else {
-    //   return this.router.navigate(['/Dashboard']);
-    // }
+    
     if(!!localStorage.getItem('token')){
       
      this.router.navigate(['Dashboard']);
     return true;
   }
   else{
-    // this.router.navigate(['/login']);
+    
     return false;
     
 
@@ -67,14 +56,12 @@ export class LoginformComponent {
   }
 
   onSubmit(): void {
-    console.log("this.login.value");
+    
 
     this.postData.getUser(this.login.value).subscribe(
       (res) => {
-        this.dataItem = res;
-        console.log(this.dataItem,"ijnui");
-        localStorage.setItem('token', this.dataItem.token);
-        this.toastr.success('login succesfull', null,{ timeOut: 1000 });
+        localStorage.setItem('token', res['token']);
+        this.toastr.success(res['message'], null,{ timeOut: 1000 });
         this.timer = setTimeout(() => {
           this.router.navigate(['/Dashboard']);
         },1000);
@@ -107,7 +94,5 @@ export class LoginformComponent {
   }
 
 
-  // hello(){
-  //   console.log('hello');
-  // }
+  
 }
