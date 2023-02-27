@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { AvatarModule } from 'primeng/avatar';
-import { AvatarGroupModule } from 'primeng/avatargroup';
 import { AuthService } from 'src/app/api/auth.service';
 import { faHouse} from '@fortawesome/free-solid-svg-icons'
 import { faBriefcase} from '@fortawesome/free-solid-svg-icons'
@@ -36,13 +33,10 @@ export class DashboardComponent {
   faBell=faBell;
   faAngleDown=faAngleDown;
   faEllipsis=faEllipsis;
-  
-  items:any;
-  data1:any;
-  data:any;
+
   overlayVisible: boolean = false;
 
-  constructor(private userData: AuthService, private router: Router,) { }
+  constructor(private router: Router,) { }
 
 
   ngOnInit() {
@@ -55,16 +49,17 @@ export class DashboardComponent {
     localStorage.clear();
     this.router.navigate(['/login']);
    }
+  
    toggle() {
     this.overlayVisible = !this.overlayVisible;
-}
+  }
 
-changeSideBarScreenWidthStatus:boolean=false;
-minimizeSideBarStatus(minimizeSideBar:boolean)
-{
-    //  console.log(minimizeSideBar);
+// changeSideBarScreenWidthStatus:boolean=false;
+// minimizeSideBarStatus(minimizeSideBar:boolean)
+// {
+//     //  console.log(minimizeSideBar);
       
-    this.changeSideBarScreenWidthStatus = minimizeSideBar;
+//     this.changeSideBarScreenWidthStatus = minimizeSideBar;
     
-} 
+// } 
 }

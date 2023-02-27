@@ -1,4 +1,9 @@
-::ng-deep .p-dropdown:not(.p-disabled).p-focus{
+::ng-deep{ .p-dropdown:not(.p-disabled).p-focus{
     box-shadow: none !important;
     border-color: none !important;
+}
+
+p-dropdown.ng-dirty.ng-invalid > .p-dropdown {
+     border-color: rgb(226, 223, 223); 
+}
 }
