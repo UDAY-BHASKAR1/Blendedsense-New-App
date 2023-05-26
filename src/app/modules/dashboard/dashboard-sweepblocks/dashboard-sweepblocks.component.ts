@@ -13,6 +13,7 @@ import {
   Validators,
   FormArray,
 } from '@angular/forms';
+import { data } from 'src/app/shared/interface/interface';
 
 @Component({
   selector: 'app-dashboard-sweepblocks',
@@ -185,11 +186,13 @@ export class DashboardSweepblocksComponent {
 
   //  Get Sweep data list
   getSweeps() {
+    
+    
     this.Loader = true;
     this.http.getlistData().subscribe((result) => {
       this.data = result['data'];
       this.Loader = false;
-      console.log(this.data);
+      console.log(this.data,"dataat");
       this.data.forEach((item) => {
         this.sweepTypeoptions.push(item.sweepBlockType);
       });
@@ -212,7 +215,7 @@ export class DashboardSweepblocksComponent {
       this.Shot?.data.forEach((ele) => {
         this.getequipmentData.push(ele);
       });
-      console.log(this.getequipmentData, 'equipment-data');
+      console.log(this.getequipmentData, 'shot-settings-data');
     });
     // getEquipmentdata
     this.http.getequipment().subscribe((res) => {
@@ -221,7 +224,7 @@ export class DashboardSweepblocksComponent {
       this.Equip?.data.forEach((element) => {
         this.getshotSettingsData.push(element);
       });
-      console.log(this.getshotSettingsData, 'shot-settings-data');
+      console.log(this.getshotSettingsData, 'equipment');
     });
   }
 

@@ -35,12 +35,19 @@ export class DashboardComponent {
   faEllipsis=faEllipsis;
 
   overlayVisible: boolean = false;
+  userProfileImage: any;
+  profilePic: any;
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router) { }
 
 
   ngOnInit() {
-    
+    // console.log(this.userProfileImage);
+   this.profilePic= localStorage.getItem('profilePic')
+    // const res = localStorage.getItem('res')
+    // const objectData = JSON.parse(res);
+    // this.profilePic=this.profilePic;
+   
   }
  
  

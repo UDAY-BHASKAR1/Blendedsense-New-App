@@ -21,10 +21,18 @@
     </div>
     <div *ngIf="Loader === false">
         <div class="card">
-            <p-table #myTab [value]="data" [paginator]="true" [scrollable]="true" scrollHeight="400px"
-                styleClass="p-datatable-striped" [rows]="10" [showCurrentPageReport]="true"
-                [tableStyle]="{'min-width': '50rem'}" [tableStyle]="{'min-height': '20rem'}"
-                currentPageReportTemplate="{first} to {last} of {totalRecords}" [rowsPerPageOptions]="[5,10,15]"
+            <p-table #myTab 
+            [value]="data" 
+            [paginator]="true" 
+            [scrollable]="true" 
+            scrollHeight="400px"
+                styleClass="p-datatable-striped"
+                [rows]="10" 
+                [showCurrentPageReport]="true"
+                [tableStyle]="{'min-width': '50rem'}"
+                 [tableStyle]="{'min-height': '20rem'}"
+                currentPageReportTemplate="{first} to {last} of {totalRecords}" 
+                [rowsPerPageOptions]="[5,10,15]"
                 [globalFilterFields]="['name']">
                 <ng-template pTemplate="caption">
                     <div class="d-flex">

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment'; 
+import { AuthResponseData, User } from '../shared/interface/interface';
 
 
 @Injectable({
@@ -12,11 +13,24 @@ export class AuthService {
   apiUrl = environment.base_URL;
   constructor(private http: HttpClient) { }
 
-  getUser(user: any) {
+  getUser(user: any):Observable<AuthResponseData>{
     let url = `${this.apiUrl}/login`;
-      return this.http.post(url, user);
+      return this.http.post<AuthResponseData>(url, user);
+  }
+  
+
+  formatUser(data:AuthResponseData){
+
+       const user =new User(data.token,data.user.email,data.user.firstName,data.user.profilePic);
+       console.log(user,"hello");
+       
+       return user;
   }
 
+  getMe(){
+     let url0 =`${this.apiUrl}/users/me`;
+     return this.http.get(url0)
+  }
 
   getData() {
     let url1 = `${this.apiUrl}/users/events`;
