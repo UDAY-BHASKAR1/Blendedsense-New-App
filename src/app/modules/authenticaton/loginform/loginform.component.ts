@@ -56,7 +56,6 @@ export class LoginformComponent {
   }
 
   onSubmit(): void {
-    
 
     this.postData.getUser(this.login.value).subscribe(
       (res) => {
