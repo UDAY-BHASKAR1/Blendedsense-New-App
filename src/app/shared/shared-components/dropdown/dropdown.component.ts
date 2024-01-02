@@ -9,12 +9,13 @@ import { FormControl,FormGroup } from '@angular/forms';
 export class DropdownComponent {
   @Input() selectedType: string;
   @Input() TypeList: Array<any>;
- 
+  @Input() holder='';
   @Input() editable;
   @Input() optionsType:any;
   @Input() formGroup:FormGroup;
   @Input() formControlName='';
   @Input() optionallabelType;
+  
   @Output() selectedTypeInfo = new EventEmitter<any>();
 
   constructor() {}

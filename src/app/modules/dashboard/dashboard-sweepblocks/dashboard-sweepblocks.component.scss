@@ -1,3 +1,5 @@
+@import "../../../../colors.scss";
+
 *{
     font-family: 'Poppins', sans-serif;
 }
@@ -101,8 +103,8 @@
        width:5px;
     }
     .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
-        background: white;
-        border-color: white;
+        background: $secondary;
+        border-color: $secondary;
         width:5px;
     }
      .p-paginator .p-paginator-next {
@@ -114,6 +116,8 @@
      .p-paginator {
         margin-left: 30rem !important;
     }
+
+    
 } 
 
 
@@ -131,7 +135,7 @@
  
   .dialouge .button {
     width: 200px !important;
-    background-color: #8066FF; 
+    background-color: $primary; 
     height: 45px;
     width: 15rem;
     border: none;
@@ -164,7 +168,7 @@
 .save{
     border: none;
     border-radius: 20px;
-    background-color: #8066FF;
+    background-color:$primary;
     height: 42px;
 }
 
@@ -175,7 +179,7 @@
     border: none;
     width: 10rem;
     height: 40px;
-    background-color: white;
+    background-color: $secondary;
 }
 .equip:hover{
     background-color: aliceblue;
@@ -201,7 +205,7 @@
    .toggle{
        border: none;
        width: 40px;
-       background-color:white;
+       background-color:$secondary;
    }
   
 
@@ -230,7 +234,7 @@
    .edit-btn{
       border: none;
       width: 100%;
-      background-color: white;
+      background-color: $secondary;
    }
    .edit-btn:hover{
     background-color: aliceblue;
@@ -244,7 +248,7 @@
    }
    .Delete-btn{
      border: none;
-     background-color: white;
+     background-color: $secondary;
      color:#FF371B;
    }
 
@@ -260,6 +264,11 @@
     }
   }
   @media screen and (max-width: 1100px) {
+    ::ng-deep .p-paginator {
+       margin-left: 10rem !important;
+    }
+  }
+  @media screen and (max-width: 1200px) {
     ::ng-deep .p-paginator {
        margin-left: 10rem !important;
     }

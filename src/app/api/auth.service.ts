@@ -1,39 +1,46 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment'; 
+import { AuthResponseData, User } from '../shared/interface/interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
- 
+  apiUrl = environment.base_URL;
+  constructor(private http: HttpClient) { }
+
+  getUser(user: any):Observable<AuthResponseData>{
+    let url = `${this.apiUrl}/login`;
+      return this.http.post<AuthResponseData>(url, user);
+  }
   
 
-  
-  
+  formatUser(data:AuthResponseData){
 
-  constructor(private http: HttpClient,private router:Router) { }
-
-  getUser(user: any) {
-    
-    let url = 'https://stage.blendedsense.com/api/login';
-    console.log(user,"user");
-    
-    return this.http.post(url, user);
+       const user =new User(data.token,data.user.email,data.user.firstName,data.user.profilePic);
+       console.log(user,"hello");
+       
+       return user;
   }
 
+  getMe(){
+     let url0 =`${this.apiUrl}/users/me`;
+     return this.http.get(url0)
+  }
 
   getData() {
-    let url1 = 'https://stage.blendedsense.com/api/users/events';
+    let url1 = `${this.apiUrl}/users/events`;
     let params = new HttpParams();
     params = params.set('businessId', '722');
     return this.http.get(url1, { params: params });
   }
 
   deleteSweep(id:Number):Observable<any>{
-    let deleteapi = 'https://stage.blendedsense.com/api/sweepblocks/delete';
+    let deleteapi = `${this.apiUrl}/sweepblocks/delete`;
     const token=localStorage.getItem('token')
     const header = new HttpHeaders().set('Authorization','Bearer '+ token)
     const headers ={headers :header}
@@ -41,7 +48,7 @@ export class AuthService {
   }
 
   Addsweep(body){
-    let url= 'https://stage.blendedsense.com/api/sweepblocks/create';
+    let url= `${this.apiUrl}/sweepblocks/create`;
     const token=localStorage.getItem('token')
     const header = new HttpHeaders().set('Authorization','Bearer '+ token)
     const headers ={headers :header}
@@ -49,30 +56,30 @@ export class AuthService {
   }
  
   Editsweep(body,id){
-  let url='https://stage.blendedsense.com/api/sweepblocks/update';
+  let url=`${this.apiUrl}/sweepblocks/update`;
   const token=localStorage.getItem('token')
   const header = new HttpHeaders().set('Authorization','Bearer '+ token)
   const headers ={headers :header}
-  return this.http.post(url="/"+id,body,headers)
+  return this.http.put(url="/"+id,body,headers)
 }
 
   getTeamData() {
-    let url2 = 'https://stage.blendedsense.com/api/users/dashboard'
+    let url2 = `${this.apiUrl}/users/dashboard`;
     return this.http.get(url2)
   }
   
   getlistData() {
-    let list = 'https://stage.blendedsense.com/api/sweepblocks/list';
+    let list = `${this.apiUrl}/sweepblocks/list`;
     return this.http.get(list)
   }
 
   getquickShot(){
-    let shot ='https://stage.blendedsense.com/api/sweepblocks/shot-settings';
+    let shot =`${this.apiUrl}/sweepblocks/shot-settings`;
     return this.http.get(shot)
   }
 
   getequipment(){
-    let Equip ='https://stage.blendedsense.com/api/sweepblocks/equipment';
+    let Equip =`${this.apiUrl}/sweepblocks/equipment`;
     return this.http.get(Equip)
   }
 }

@@ -11,13 +11,15 @@ import { DashboardSweepblocksComponent } from './dashboard-sweepblocks/dashboard
 import { FontAwesomeModule} from '@fortawesome/angular-fontawesome'
 import { PrimeuiModule } from 'src/app/shared/prime ui/primeui/primeui.module';
 import { SharedComponentsModule } from 'src/app/shared/shared-components/shared-components.module';
+// import { AuthenticatonModule } from '../authenticaton/authenticaton.module';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     DashboardSubjectsComponent,
-    DashboardSweepblocksComponent
+    DashboardSweepblocksComponent,
+  
   ],
   imports: [
     CommonModule,
@@ -25,9 +27,11 @@ import { SharedComponentsModule } from 'src/app/shared/shared-components/shared-
     PrimeuiModule,
     FontAwesomeModule,
     SharedComponentsModule,
-    // FormsModule, 
-    // ReactiveFormsModule,
+    // AuthenticatonModule
 
-  ]
+   ],
+   exports:[
+    DashboardComponent
+   ]
 })
 export class DashboardModule { }

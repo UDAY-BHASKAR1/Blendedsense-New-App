@@ -87,14 +87,29 @@ p{
     width: 20%;
  }
  
- .eye-icon{
-  position: absolute;
-  right: 50px;
-  top: 20.5rem;
-  cursor: pointer;
-  color: $primary;
- }
+//  .eye-icon{
+//   position: absolute;
+//   right: 50px;
+//   top: 20.5rem;
+//   cursor: pointer;
+//   color: $primary;
+//  }
  
+ .eye-icon {
+  position: relative;
+  /* right: 50px; */
+  /* top: 0; */
+  cursor: pointer;
+  color: #8066FF;
+  bottom: 3.5rem;
+  left: 10rem;
+}
+
+@media screen and (max-width: 1200px)  and (min-width:350px)  {
+  .eye-icon {
+     left:7rem;
+  }
+}
  
 
  .forgot-password{

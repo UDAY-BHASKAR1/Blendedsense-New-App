@@ -1,8 +1,9 @@
 <div [formGroup]="formGroup">
 <p-dropdown  optionLabel="name"
-    [showClear]="false"
-     [style]="{width: '100%'}" 
-     [placeholder]="editable === true ? '   ':'' " 
+      [placeholder]="holder"
+      [showClear]="false"
+      [style]="{width: '100%'}" 
+     
       [dropdownIcon]="'pi pi-angle-down'"
       [options]="optionsType"
       [formControlName]="formControlName"
@@ -11,3 +12,4 @@
       (onChange)="selectedSweepType(formGroup.get(formControlName)?.value)">
 </p-dropdown>
 </div>
+

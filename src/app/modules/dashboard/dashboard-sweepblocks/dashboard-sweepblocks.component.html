@@ -16,15 +16,23 @@
     background-color: white;
     height: 100vh;
     ">
-        <img class="loaderImage" src="https://stage.blendedsense.com/img/bs_logo.774cd192.gif" alt="noImage"
+        <img class="loaderImage" src="./../../../../assets/bs_logo.Loader GIF.gif" alt="noImage"
             style="width: 100px;margin-bottom: 10rem;">
     </div>
     <div *ngIf="Loader === false">
         <div class="card">
-            <p-table #myTab [value]="data" [paginator]="true" [scrollable]="true" scrollHeight="400px"
-                styleClass="p-datatable-striped" [rows]="10" [showCurrentPageReport]="true"
-                [tableStyle]="{'min-width': '50rem'}" [tableStyle]="{'min-height': '20rem'}"
-                currentPageReportTemplate="{first} to {last} of {totalRecords}" [rowsPerPageOptions]="[5,10,15]"
+            <p-table #myTab 
+            [value]="data" 
+            [paginator]="true" 
+            [scrollable]="true" 
+            scrollHeight="400px"
+                styleClass="p-datatable-striped"
+                [rows]="10" 
+                [showCurrentPageReport]="true"
+                [tableStyle]="{'min-width': '50rem'}"
+                 [tableStyle]="{'min-height': '20rem'}"
+                currentPageReportTemplate="{first} to {last} of {totalRecords}" 
+                [rowsPerPageOptions]="[5,10,15]"
                 [globalFilterFields]="['name']">
                 <ng-template pTemplate="caption">
                     <div class="d-flex">
@@ -39,7 +47,7 @@
                         <div class="dialouge ml-auto">
                             <!-- <app-button class="button" text="+ Add Sweep Block" 
                         (btnClick)="showBasicDialog2()" ></app-button> -->
-                            <button class="button" (click)="addData()">+ Add Sweep Block</button>
+                            <button class="button"  (click)="addData()">+ Add Sweep Block</button>
                         </div>
                     </div>
                 </ng-template>
@@ -60,7 +68,7 @@
                             <p-overlayPanel #op my="right bottom" at="left bottom">
                                 <ng-template pTemplate>
                                     <div class="border-bottom-1 surface-border"><button class="edit-btn"
-                                            (click)="EditData(element)">Edit Sweep</button></div><br>
+                                            (click)="EditData(element)" >Edit Sweep</button></div><br>
                                     <div class="btn-div"><button class="Delete-btn" (click)="showModalDialog()">Delete
                                             Sweep</button></div>
                                 </ng-template>
@@ -91,14 +99,27 @@
 
                         <div class="group pad">
                             <label for="">Title</label><br>
-                            <app-input [type]="'text'" [formGroup]="login" [formControlName]="'title'"
-                                [error]=""></app-input>
+                            <app-input
+                             [type]="'text'" 
+                             [formGroup]="login"
+                             [formControlName]="'title'"
+                                [error]=" inputRequiredValidation(login, 'title')
+                                ? 'Please provide Title'
+                                :errorlist['']"></app-input>
+              
                         </div>
                         <div class="pad1">
                             <label for="">Duration</label><br>
                             <div class="group d-flex">
-                                <app-input [type]="'number'" [formGroup]="login" [formControlName]="'duration'"
-                                    [error]=""></app-input>
+                                <app-input [type]="'number'"  [formGroup]="login" [formControlName]="'duration'"
+
+                               [minlength]="'2'"
+                               [maxlength]="'3'"
+                                [error]="
+                                 inputRequiredValidation(login, 'duration')
+                                 ? 'Please provide duration'
+                                 :errorlist['']"
+                                    ></app-input>
                                 <p> minutes</p>
                             </div>
                         </div>
@@ -108,7 +129,16 @@
                         <hr>
                         <div>
                             <p>Shot Settings</p>
-                            <app-dropdown  [formGroup]="login" [optionsType]="getequipmentData" [formControlName]="'equipment'" [optionallabelType]="'name'"></app-dropdown>
+                            <app-dropdown  [formGroup]="login" 
+                            [optionsType]="getequipmentData"
+                             [holder]="'Select...'" 
+                             [formControlName]="'equipment'" 
+                             [optionallabelType]="'name'"
+                             [error]="
+                             inputRequiredValidation(login, 'equipment')
+                             ? 'Please provide shotsettings'
+                             :errorlist['']">
+                            </app-dropdown>
                         </div>
                         <div>
                             <div class="d-flex justify-content-between pt-4">
@@ -123,7 +153,16 @@
                                         <div class="carstot d-flex justify-content-between">
                                         <div class="drop1">
                                             <!-- <p>Equipment</p> -->
-                                            <app-dropdown [formGroup]="login" [optionsType]="getshotSettingsData" [formControlName]="'shotsettings'" [optionallabelType]="'name'" ></app-dropdown>
+                                            <app-dropdown [formGroup]="login"
+                                             [optionsType]="getshotSettingsData" 
+                                             [holder]="'Select...'" 
+                                             [formControlName]="'shotsettings'" 
+                                             [optionallabelType]="'name'" 
+                                             [error]="
+                                             inputRequiredValidation(login, 'shotsettings')
+                                               ? 'Please select equipment'
+                                             :errorlist['']">
+                                            </app-dropdown>
                                         </div>
                                         <div class="drop2">
                                             <!-- <p>Quantity</p> -->

@@ -1,45 +1,44 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormBuilder,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ToastrService} from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import {AuthService} from 'src/app/api/auth.service'
+import { AuthService } from 'src/app/api/auth.service';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-
+import { AuthInterceptor } from 'src/app/api/auth.interceptor';
+import { DashboardComponent } from '../../dashboard/dashboard/dashboard.component';
+import { LocalizedString } from '@angular/compiler';
+import { Store } from '@ngrx/store';
+import { loginStart } from 'src/app/state/auth.action';
 
 @Component({
   selector: 'app-loginform',
   templateUrl: './loginform.component.html',
   styleUrls: ['./loginform.component.scss'],
-  
 })
 export class LoginformComponent {
-  faEyeSlash=faEyeSlash;
-  faEye=faEye;
+  faEyeSlash = faEyeSlash;
+  faEye = faEye;
   visible: boolean = true;
   changetype: boolean = true;
-
   login: FormGroup;
-
-  errorlist: any = '';
-
-  title = 'toaster-not';
-  loginUserData: any = {};
-  dataItem: any = {};
+  errorlist: string = '';
   timer: any;
-  timeOut: number;
+  userProfileImage: string;
+  SlashMeData: any;
+
   constructor(
     private postData: AuthService,
-    private toastr:ToastrService,
+    private toastr: ToastrService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private store: Store<any>
   ) {
-    
     this.login = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -47,43 +46,46 @@ export class LoginformComponent {
   }
 
   ngOnInit() {
-    // if there is token in localstorage navigate to dashboard
-    // if (!!localStorage.getItem('token') == null) {
-    //    return this.router.navigate(['/login']);
-    // } else {
-    //   return this.router.navigate(['/Dashboard']);
-    // }
-    if(!!localStorage.getItem('token')){
-      
-     this.router.navigate(['Dashboard']);
-    return true;
-  }
-  else{
-    // this.router.navigate(['/login']);
-    return false;
-    
+    // this.getSlashMe()
 
-  }
+    if (!!localStorage.getItem('token')) {
+      this.router.navigate(['Dashboard']);
+      return true;
+    } else {
+      return false;
+    }
   }
 
   onSubmit(): void {
-    console.log(this.login.value);
+    const user = this.login.value;
+    console.log(user, 'userrrrrr');
 
-    this.postData.getUser(this.login.value).subscribe(
-      (res) => {
-        this.dataItem = res;
-        console.log(this.dataItem);
-        localStorage.setItem('token', this.dataItem.token);
-        this.toastr.success('login succesfull', null);
-        // this.timer = setTimeout(() => {
-        //   this.router.navigate(['/Dashboard']);
-        // });
-      },
-      (err) => {
-        this.toastr.error('Invalid User Details', null, { timeOut: 1000 });
-      }
-    );
+    this.store.dispatch(loginStart({ user }));
+    // this.postData.getUser(this.login.value).subscribe(
+    //   (res:any) => {
+    //     AuthInterceptor.accessToken = res.token
+    // console.log(AuthInterceptor.accessToken,'AuthInterceptor Accestoken');
+
+    //     localStorage.setItem('res', JSON.stringify(res))
+    //     localStorage.setItem('token', res['token']);
+    //     this.toastr.success(res['message'], null,{ timeOut: 1000 });
+    //     this.timer = setTimeout(() => {
+    //       this.router.navigate(['/Dashboard']);
+    //     },1000);
+    //   },
+    //   (err) => {
+    //     this.toastr.error('message', null,{ timeOut: 1000 });
+    //   }
+    // );
   }
+
+  // getSlashMe(){
+  //   this.postData.getMe().subscribe((res:any)=>{
+  //  this.SlashMeData=res
+  //  console.log(this.SlashMeData,'slashmedata');
+   
+  //   })
+  // }
 
   inputRequiredValidation(login: FormGroup, type: string): boolean {
     return (
@@ -104,11 +106,5 @@ export class LoginformComponent {
   viewpass() {
     this.visible = !this.visible;
     this.changetype = !this.changetype;
-  }
-
-
-  hello(){
-    console.log('hello');
-    
   }
 }
